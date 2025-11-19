@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --forest-green: #2d5016;
+    --sage-green: #87a878;
+    --cream: #f5f1e8;
+    --earth-brown: #8b6f47;
+    --moss: #6b8e4e;
+    --white: #ffffff;
+    --light-green: #e8f0e3;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-green) 100%);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-section {
+    text-align: center;
+    background: var(--white);
+    padding: 50px 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(45, 80, 22, 0.1);
+    border: 2px solid var(--sage-green);
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 4px solid var(--sage-green);
+    box-shadow: 0 5px 15px rgba(45, 80, 22, 0.2);
+}
+
+.profile-section h1 {
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    color: var(--forest-green);
+    font-size: 2.5rem;
+}
+
+.profile-bio {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--earth-brown);
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#sortSelect {
+    padding: 12px 24px;
+    border: 2px solid var(--sage-green);
+    border-radius: 10px;
+    background: var(--white);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: var(--forest-green);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#sortSelect:hover {
+    border-color: var(--forest-green);
+    box-shadow: 0 3px 10px rgba(45, 80, 22, 0.15);
+}
+
+.btn-primary {
+    background: var(--forest-green);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--moss);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: var(--white);
+    margin: 50px auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    position: relative;
+    border: 2px solid var(--sage-green);
+    box-shadow: 0 15px 40px rgba(45, 80, 22, 0.2);
+}
+
+.modal-content h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--forest-green);
+    margin-bottom: 20px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--earth-brown);
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--forest-green);
+}
+
+#postForm input[type="text"],
+#postForm textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid var(--light-green);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+#postForm input[type="text"]:focus,
+#postForm textarea:focus {
+    outline: none;
+    border-color: var(--sage-green);
+}
+
+#postForm textarea {
+    min-height: 150px;
+}
+
+#postForm input[type="file"] {
+    margin: 10px 0;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 200px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: block;
+}
+
+#postForm button[type="submit"] {
+    margin-top: 10px;
+}
+
+#posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post {
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(45, 80, 22, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid var(--light-green);
+}
+
+.post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(45, 80, 22, 0.2);
+    border-color: var(--sage-green);
+}
+
+.post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 25px;
+}
+
+.post h2 {
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+    color: var(--forest-green);
+    font-size: 1.5rem;
+}
+
+.post p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: var(--earth-brown);
+    font-weight: 300;
+}
+
+.post-date {
+    font-size: 14px;
+    color: var(--sage-green);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit {
+    background: var(--moss);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-delete {
+    background: var(--earth-brown);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background: var(--forest-green);
+    transform: scale(1.05);
+}
+
+.btn-delete:hover {
+    background: #6d5838;
+    transform: scale(1.05);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--forest-green);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    color: var(--moss);
+    transform: translateX(-5px);
+}
+
+.post-detail {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(45, 80, 22, 0.15);
+    border: 2px solid var(--sage-green);
+}
+
+.post-detail-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 20px rgba(45, 80, 22, 0.1);
+}
+
+.post-detail h1 {
+    margin-bottom: 25px;
+    font-family: 'Playfair Display', serif;
+    color: var(--forest-green);
+    font-size: 2.5rem;
+    line-height: 1.3;
+}
+
+.post-detail-content {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--earth-brown);
+    font-weight: 300;
+}
+
+.post {
+    cursor: pointer;
+}
